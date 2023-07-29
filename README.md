@@ -1,8 +1,8 @@
 # Mini_Yelp
-## Database Drive Application
+##  How is the application built
 Node.JS  
 server side: express  
-client side: next.js  
+client side: next.js, react
 
 Install npm packages in both client/serverside
 ```
