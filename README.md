@@ -1,5 +1,5 @@
 # Mini_Yelp
-Collaborated with other three teammates (this repo is the integrated final version of the project)
+Collaborated with other three teammates (this repo is the integrated final version of the project)  
 Check https://github.com/AEsir777/Review_Mangement_System for the development repo
 ##  How is the application built
 Node.JS  
