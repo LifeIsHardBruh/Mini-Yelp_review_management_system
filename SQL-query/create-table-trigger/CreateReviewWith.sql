@@ -1,0 +1,7 @@
+CREATE TABLE ReviewWith (
+    bid VARCHAR(36) NOT NULL,
+    uid VARCHAR(36) NOT NULL,
+	rid VARCHAR(36) NOT NULL,
+	FOREIGN KEY (bid) REFERENCES Business(bid),
+	FOREIGN KEY (uid) REFERENCES UserFile(uid)
+);

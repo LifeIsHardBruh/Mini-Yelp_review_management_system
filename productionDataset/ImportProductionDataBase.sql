@@ -1,0 +1,125 @@
+-- Create tables using code in SQL-query\create-table-trigger, don't create triggers here
+
+use cs348;
+LOAD DATA INFILE "C:\Business.csv"
+INTO TABLE Business
+FIELDS TERMINATED BY ','
+ENCLOSED BY "
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE "C:\UserAuth.csv"
+INTO TABLE UserAuth
+FIELDS TERMINATED BY ','
+ENCLOSED BY "
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE "C:\UserFile.csv"
+INTO TABLE UserFile
+FIELDS TERMINATED BY ','
+ENCLOSED BY "
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE "C:\Cate.csv"
+INTO TABLE Category
+FIELDS TERMINATED BY ','
+ENCLOSED BY "
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+
+
+LOAD DATA INFILE "C:\ReviewWith.csv"
+INTO TABLE ReviewWith
+FIELDS TERMINATED BY ','
+ENCLOSED BY "
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE "C:\Review.csv"
+INTO TABLE Review
+FIELDS TERMINATED BY ','
+ENCLOSED BY "
+LINES TERMINATED BY '\n' 
+IGNORE 1 LINES; 
+
+CREATE TABLE coolHistory1 (
+uid VARCHAR(36), 
+rowNum int
+);
+
+LOAD DATA INFILE "C:\coolHistory1.csv"
+INTO TABLE coolHistory1
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY "
+LINES TERMINATED BY '\n' 
+IGNORE 1 LINES; 
+
+CREATE TABLE coolHistory2 (
+rid VARCHAR(36) REFERENCES Review(eid), 
+rowNum int
+);
+
+LOAD DATA INFILE "C:\coolHistory2.csv"
+INTO TABLE coolHistory2
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY "
+LINES TERMINATED BY '\n' 
+IGNORE 1 LINES; 
+
+INSERT INTO coolHistory (uid, rid)
+SELECT uid, rid FROM coolHistory1 as c1
+JOIN coolHistory2 as c2
+ON c1.rowNum = c2.rowNum;
+DROP TABLE coolHistory1;
+DROP TABLE coolHistory2;
+
+LOAD DATA INFILE "C:\Location.csv"
+INTO TABLE Location
+FIELDS TERMINATED BY ','
+ENCLOSED BY "
+LINES TERMINATED BY '\n' 
+IGNORE 1 LINES; 
+
+
+CREATE TABLE Friend1 (
+uid1 VARCHAR(36) REFERENCES UserAuth(uid), 
+rowNum int
+);
+
+LOAD DATA INFILE "C:\Friend1.csv"
+INTO TABLE Friend1
+FIELDS TERMINATED BY ','
+ENCLOSED BY "
+LINES TERMINATED BY '\n' 
+IGNORE 1 LINES; 
+
+CREATE TABLE Friend2 (
+uid2 VARCHAR(36) REFERENCES UserAuth(uid), 
+rowNum int
+);
+
+LOAD DATA INFILE "C:\Friend2.csv"
+INTO TABLE Friend2
+FIELDS TERMINATED BY ','
+ENCLOSED BY "
+LINES TERMINATED BY '\n' 
+IGNORE 1 LINES; 
+
+INSERT INTO Friend (uid1, uid2)
+SELECT uid1, uid2 FROM Friend1 as f1
+JOIN Friend2 as f2
+ON f1.rowNum = f2.rowNum;
+DROP TABLE Friend1;
+DROP TABLE Friend2;
+
+LOAD DATA INFILE "C:\Photo.csv"
+INTO TABLE Photo
+FIELDS TERMINATED BY ','
+ENCLOSED BY "
+LINES TERMINATED BY '\n' 
+IGNORE 1 LINES; 
+
+-- Create triggers using code in SQL-query\create-table-trigger
