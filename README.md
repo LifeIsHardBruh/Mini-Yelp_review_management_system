@@ -1,4 +1,4 @@
-# Hotel_Review_Management_System
+# Mini_Yelp
 ## Database Drive Application
 Node.JS  
 server side: express  
