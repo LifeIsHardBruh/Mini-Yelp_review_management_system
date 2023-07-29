@@ -10,22 +10,6 @@ npm install
 ```
 set up ```.env``` file to store mySQL password
 
-## Load sample datasets from localhost:3306
-```
-cd server-side
-node initialize-database.js
-```
-which runs all sql script in 
-[intialize-test.sql](SQL-query/sample-datasets/initialize-test.sql)
-
-## Load production datasets
-unzip the [production_dataset.tar.gz](productionDataset/production_dataset.tar.gz)
-With the cleaned csv file, we can import the data in to our mysql database. We applied function “LOAD DATA INFILE ‘path’ INTO TABLE table_name” so that we can import one csv file for a table within a short period of time. In folder “productionDataset”, we created three files and implement them one by one.   
-InitializedProductionTable.sql: create table and schema for the database.  
-ImportProductionDataBase.sql: load the data in csv file to the table in database.  
-FinalizedDBWithTrigger.sql: Set up triggers so that further insertion and update can be automated.  
-
-
 
 
 ## START front end on localhost:8000
