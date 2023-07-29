@@ -1,5 +1,5 @@
 # Mini_Yelp
-collaborate with other three teammates (this repo is the integrated final version of the project)
+Collaborated with other three teammates (this repo is the integrated final version of the project)
 ##  How is the application built
 Node.JS  
 server side: express  
